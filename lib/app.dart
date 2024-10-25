@@ -1,3 +1,4 @@
+import 'package:assignment_todo/display.dart';
 import 'package:assignment_todo/to-doscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         "/home": (context) => const HomeScreen(),
         "/todo": (context) => const ToDoScreen(),
         "/Splash": (context) => const SplashScreen(),
+        "/Display": (context) => const Display(),
       },
       initialRoute: "/Splash",
     );

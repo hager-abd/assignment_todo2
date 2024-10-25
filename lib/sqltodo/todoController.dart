@@ -7,7 +7,7 @@ class Controller {
   final _Sql = Sql();
 
   Future<void> getTods() async {
-    await _Sql.read("SELECT * FROM todo").then(
+    await _Sql.read("todo").then(
       (response) {
         todos = response.map((todo) => TodoModel.asTODO(todo)).toList();
       },
@@ -17,21 +17,21 @@ class Controller {
   void addTodo({
     required String title,
     required String description,
-    required bool isDone,
+    required int isDone,
   }) {
     _Sql.create(
       "todo",
       data: {
         "title": title,
         "description": description,
-        "isDone": 0,
+        "isDone": isDone,
       },
     ).then((response) {
-      if (response > 0) {
+      if (response >= 0) {
         todos.add(TodoModel(response,
             title: title, description: description, isDone: isDone));
       } else {
-        debugPrint("Error: $response");
+        debugPrint("ErrorControllerAdd: $response");
       }
     });
   }
@@ -40,14 +40,14 @@ class Controller {
     int id, {
     required String title,
     required String description,
-    required bool isDone,
+    required int isDone,
   }) {
     _Sql.update(
       "todo",
       data: {
         "title": title,
         "description": description,
-        "isDone": isDone,
+        "isDone": isDone == 0 ? 0 : 1,
       },
       condition: "id == $id",
     ).then((response) {

@@ -2,7 +2,7 @@ class TodoModel {
   int id;
   String title;
   String description;
-  bool isDone;
+  int isDone;
 
   TodoModel(this.id,
       {required this.title,
@@ -18,7 +18,7 @@ class TodoModel {
       required bool isDone}) {
     this.title = title;
     this.description = description;
-    this.isDone = isDone;
+    this.isDone = isDone ? 1 : 0;
   }
 
   static TodoModel asTODO(Map<String, dynamic> map) {
@@ -26,6 +26,6 @@ class TodoModel {
     return TodoModel(map['id'],
         title: map['title'],
         description: map['description'],
-        isDone: map['isDone'] == 0 ? false : true);
+        isDone: map['isDone']);
   }
 }

@@ -20,7 +20,7 @@ class Sql {
 
   Future<List<Map<String, dynamic>>> read(String table) async {
     try {
-      Database? DB = await _db;
+      Database? DB = await db;
       List<Map<String, dynamic>> response = await DB!.query(table);
       return response;
     } catch (e) {
@@ -31,8 +31,12 @@ class Sql {
 
   Future<int> create(String table, {required Map<String, dynamic> data}) async {
     try {
-      Database? DB = await _db;
-      int response = await DB!.insert(table, data);
+      Database? DB = await db;
+      if (DB == null) {
+        debugPrint("Error: Database is not initialized.");
+        return -1;
+      }
+      int response = await DB.insert(table, data);
       return response;
     } catch (e) {
       debugPrint("Error: $e");
@@ -43,7 +47,7 @@ class Sql {
   Future<bool> update(String table,
       {required Map<String, dynamic> data, required String condition}) async {
     try {
-      Database? DB = await _db;
+      Database? DB = await db;
       bool response =
           await DB!.update(table, data, where: condition) < 0 ? false : true;
       return response;
@@ -55,7 +59,7 @@ class Sql {
 
   Future<bool> delete(String table, {required String condition}) async {
     try {
-      Database? DB = await _db;
+      Database? DB = await db;
       bool response =
           await DB!.delete(table, where: condition) < 0 ? false : true;
       return response;
