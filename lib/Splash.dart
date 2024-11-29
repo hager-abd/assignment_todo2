@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Controller controller = Controller();
+    Todocontroller controller = Todocontroller();
     controller.getTods().then(
       (value) {
         Future.delayed(const Duration(seconds: 5), () {
