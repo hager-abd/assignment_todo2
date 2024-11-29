@@ -1,9 +1,32 @@
+import 'package:assignment_todo/sqltodo/todoController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Controller controller = Controller();
+    controller.getTods().then(
+      (value) {
+        Future.delayed(const Duration(seconds: 5), () {
+          if (mounted) {
+            Navigator.pushReplacementNamed(context, "/home",
+                arguments: controller);
+          }
+        });
+      },
+    );
+    super.initState();
+  }
+
+//fulstate with init with get with argument
   @override
   Widget build(BuildContext context) {
     return Scaffold(

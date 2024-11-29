@@ -3,26 +3,13 @@ import 'package:flutter/material.dart';
 
 import 'sqltodo/todoController.dart';
 
-class Display extends StatefulWidget {
-  const Display({super.key});
-
-  @override
-  State<Display> createState() => _DisplayState();
-}
-
-class _DisplayState extends State<Display> {
-  @override
-  void initState() {
-    super.initState();
-    todoController.getTods().then((value) {
-      print(todoController.todos);
-    });
-  }
-
-  final Controller todoController = Controller();
+class Display extends StatelessWidget {
+  Display({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Controller todoController =
+        ModalRoute.of(context)!.settings.arguments as Controller;
     return Scaffold(
         appBar: AppBar(
           title: const Text("Todos App"),

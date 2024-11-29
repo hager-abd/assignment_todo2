@@ -18,6 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Controller controller =
+        ModalRoute.of(context)!.settings.arguments as Controller;
     return Scaffold(
       appBar: AppBar(
         title: const Text("TO DO", style: TextStyle(color: Colors.white)),
