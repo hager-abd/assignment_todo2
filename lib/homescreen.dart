@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Todocontroller controller = Todocontroller();
     return Scaffold(
       appBar: AppBar(
         title: const Text("TO DO", style: TextStyle(color: Colors.white)),
@@ -193,7 +194,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     }
                     if (value == 'open') {
-                      Navigator.of(context).pushNamed("/Display");
+                      Navigator.of(context)
+                          .pushNamed("/Display", arguments: controller);
                     }
                   },
                   itemBuilder: (BuildContext context) =>
