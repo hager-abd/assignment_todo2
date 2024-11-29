@@ -169,7 +169,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   const SizedBox(height: 20),
                                   ElevatedButton(
                                     onPressed: () {
-                                      Controller todoController = Controller();
+                                      Todocontroller todoController =
+                                          Todocontroller();
                                       todoController.updateTodo(
                                           int.tryParse(id.text) ?? 0,
                                           title: title.text,
@@ -315,7 +316,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 const SizedBox(height: 20),
                                 ElevatedButton(
                                   onPressed: () {
-                                    Controller todoController = Controller();
+                                    Todocontroller todoController =
+                                        Todocontroller();
                                     todoController.addTodo(
                                         title: title.text,
                                         description: description.text,

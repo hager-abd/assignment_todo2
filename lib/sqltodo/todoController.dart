@@ -2,7 +2,7 @@ import 'package:assignment_todo/sqltodo/sql.dart';
 import 'package:assignment_todo/sqltodo/todoModel.dart';
 import 'package:flutter/cupertino.dart';
 
-class Controller {
+class Todocontroller {
   List<TodoModel> todos = [];
   final _Sql = Sql();
 

@@ -8,8 +8,8 @@ class Display extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Controller todoController =
-        ModalRoute.of(context)!.settings.arguments as Controller;
+    Todocontroller todoController =
+        ModalRoute.of(context)!.settings.arguments as Todocontroller;
     return Scaffold(
         appBar: AppBar(
           title: const Text("Todos App"),
